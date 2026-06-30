@@ -1,0 +1,63 @@
+{
+  "name": "@release-change/bot",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "Automated running of release-change",
+  "keywords": [
+    "automation",
+    "pre-release",
+    "release",
+    "release-automation",
+    "release-workflow",
+    "semantic",
+    "semantic-version",
+    "semver",
+    "semver-release",
+    "tags",
+    "version",
+    "versioning"
+  ],
+  "homepage": "https://github.com/release-change/bot",
+  "bugs": {
+    "url": "https://github.com/release-change/bot/issues"
+  },
+  "author": "Victor Brito (https://victor-brito.dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/release-change/bot.git"
+  },
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "^22.12.0 || ^24.0.0",
+    "npm": ">=10.9.0",
+    "pnpm": ">=11.1.3"
+  },
+  "scripts": {
+    "biome": "biome check --write .",
+    "biome:check": "biome check .",
+    "biome:format": "biome format --write .",
+    "biome:format:check": "biome format .",
+    "biome:lint": "biome lint --write .",
+    "biome:lint:check": "biome lint .",
+    "build": "tsc",
+    "dev": "concurrently --prefix name --group --kill-others-on-fail pnpm:server:watch pnpm:tsc:watch pnpm:test:watch",
+    "prepare": "husky",
+    "server": "node --env-file-if-exists=.env dist/server.js",
+    "server:watch": "node --env-file-if-exists=.env --watch-path=./dist --watch-path=./test dist/server.js",
+    "start": "pnpm build && pnpm run server",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "tsc:watch": "tsc --watch --preserveWatchOutput"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.0",
+    "@commitlint/cli": "21.0.2",
+    "@commitlint/config-conventional": "21.0.2",
+    "@types/node": "24.13.2",
+    "concurrently": "10.0.3",
+    "husky": "9.1.7",
+    "typescript": "6.0.3",
+    "vitest": "4.1.9"
+  }
+}
