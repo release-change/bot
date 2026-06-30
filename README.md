@@ -6,9 +6,6 @@ Automated running of release-change
 [![ESM-only package](https://img.shields.io/badge/package-ESM--only-ffe536)](https://nodejs.org/api/esm.html)
 [![Conventional Commits 1.0.0](https://img.shields.io/badge/Conventional_Commits-1.0.0-fe5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 [![Checked with Biome](https://img.shields.io/badge/Checked_with-Biome-60a5fa?style=flat&logo=biome)](https://biomejs.dev)
-[![Released with release-change](https://img.shields.io/badge/Released_with-release--change-8d8d8d)](https://github.com/release-change/release-change)
-![NPM latest version](https://img.shields.io/npm/v/%40release-change%2Fbot/latest)
-![Node support](https://img.shields.io/node/v/%40release-change%2Fbot)
 ![Build status](https://img.shields.io/github/actions/workflow/status/release-change/bot/run-tests.yml)
 
 **release-change-bot** is a GitHub App which runs [release-change](https://github.com/release-change/release-change) when any changes in the codebase are pushed to any of the branches on which releases should happen. If a release is made, it then creates a release pull request and comments on the issues and pull requests which are concerned by the release.
