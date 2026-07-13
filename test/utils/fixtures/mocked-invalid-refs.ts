@@ -1,0 +1,1 @@
+export const mockedInvalidRefs = ["refs/tags/v1.2.3"];
