@@ -27,8 +27,8 @@ export const fetchConfigFile = async (
     }
   );
   const { ok, status, statusText } = response;
-  if (!ok) throw new Error(`Failed to fetch the config file: ${status} ${statusText}`);
   if (status === 404) return null;
+  if (!ok) throw new Error(`Failed to fetch the config file: ${status} ${statusText}`);
   const data = await response.json();
   if (typeof data === "object" && data && "content" in data) {
     const { content } = data;

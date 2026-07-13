@@ -21,7 +21,7 @@ it("should throw an error if the response is not OK", async () => {
 });
 it("should return `null` if the config file is not found", async () => {
   vi.mocked(mockedFetch).mockReturnValue({
-    ok: true,
+    ok: false,
     status: 404,
     statusText: "Not Found"
   });
