@@ -50,6 +50,10 @@
     "test:watch": "vitest",
     "tsc:watch": "tsc --watch --preserveWatchOutput"
   },
+  "dependencies": {
+    "@release-change/config": "0.2.0",
+    "@release-change/shared": "0.2.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "2.5.3",
     "@commitlint/cli": "21.2.1",

@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@release-change/config':
+        specifier: 0.2.0
+        version: 0.2.0
+      '@release-change/shared':
+        specifier: 0.2.0
+        version: 0.2.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.3
@@ -205,6 +212,18 @@ packages:
 
   '@oxc-project/types@0.133.0':
     resolution: {integrity: sha512-KzkdCd6Uxqnf6l3HOw1xfatAlUURA0g14cvBYFyJ5SaNOQbOUvBr9PKArcPcrNIeRsBdgcUzOGrhKveVpvOIGA==}
+
+  '@release-change/config@0.2.0':
+    resolution: {integrity: sha512-mGA8TAau5lyIpNLEwTVvSQWe3AVJPvEywvJYrPHIG7lulpBEcbsUNdyb2XK84c6j7yyYaz5feZbgNBemkA9i0Q==}
+    engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.33.0'}
+
+  '@release-change/logger@0.2.0':
+    resolution: {integrity: sha512-zMkZGuagrjbrAVH/P5uKEvxwa7Qsq1Fnie+0wO6RvQLEfsoRLBnw2oH/q53NXctyxj0FAuSdNJQPy00uk2dM9Q==}
+    engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.33.0'}
+
+  '@release-change/shared@0.2.0':
+    resolution: {integrity: sha512-PVbbYsQF03BXGyITCp0ty8q4fZgsKfiB95evx6sIhinIQ5RCj2vYdY+ktMZTUMCpPrEcy1ftQoQBMvb0UF6iVw==}
+    engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.33.0'}
 
   '@rolldown/binding-android-arm64@1.0.3':
     resolution: {integrity: sha512-454rs7jHngixp/NMxd5srYD57OnzSlZ/eFTETjORQHLwJG1lRtmNOJcBerZlfu4GjKqeq8aCCIQrMdHyhI51Hw==}
@@ -1143,6 +1162,17 @@ snapshots:
     optional: true
 
   '@oxc-project/types@0.133.0': {}
+
+  '@release-change/config@0.2.0':
+    dependencies:
+      '@release-change/logger': 0.2.0
+      '@release-change/shared': 0.2.0
+
+  '@release-change/logger@0.2.0':
+    dependencies:
+      '@release-change/shared': 0.2.0
+
+  '@release-change/shared@0.2.0': {}
 
   '@rolldown/binding-android-arm64@1.0.3':
     optional: true
