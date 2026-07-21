@@ -1,5 +1,8 @@
 import type { AppConfig, GitHubPayload } from "../types.js";
 
+import { cloneRepository } from "../utils/clone-repository.js";
+import { createTemporaryWorkspace } from "../utils/create-temporary-workspace.js";
+import { deleteTemporaryWorkspace } from "../utils/delete-temporary-workspace.js";
 import { extractBranchFromRef } from "../utils/extract-branch-from-ref.js";
 import { getEligibleBranches } from "../utils/get-eligible-branches.js";
 import { getInstallationToken } from "../utils/get-installation-token.js";
@@ -29,6 +32,7 @@ export const handleWebhook = async (
     const payload: GitHubPayload = JSON.parse(rawBody);
     const {
       ref,
+      after,
       repository: { full_name: repositoryName },
       installation: { id: installationId }
     } = payload;
@@ -42,7 +46,10 @@ export const handleWebhook = async (
       token
     );
     if (branch && eligibleBranches.includes(branch)) {
-      runReleaseChange();
+      const workspace = await createTemporaryWorkspace(installationId, after);
+      await cloneRepository(owner, repo, workspace, token);
+      await runReleaseChange(workspace, token);
+      await deleteTemporaryWorkspace(workspace);
       return { status: 200, message: "release-change has been triggered." };
     }
     return {
