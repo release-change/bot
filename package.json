@@ -63,6 +63,6 @@
     "concurrently": "10.0.5",
     "husky": "9.1.7",
     "typescript": "7.0.2",
-    "vitest": "4.1.10"
+    "vitest": "4.1.11"
   }
 }
