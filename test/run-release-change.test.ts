@@ -35,7 +35,7 @@ it.each(mockedReleaseChangeCommands)(
     await runReleaseChange(mockedCwd, mockedToken);
     expect(spawn).toHaveBeenCalledWith(
       expectedCommand,
-      ["@release-change/cli", "--debug"],
+      ["@release-change/cli"],
       expect.objectContaining({
         cwd: mockedCwd,
         env: expect.objectContaining({ RELEASE_TOKEN: mockedToken })
