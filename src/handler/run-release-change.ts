@@ -12,7 +12,7 @@ export const runReleaseChange = async (cwd: string, token: string): Promise<void
     const packageManager = getPackageManager(cwd, process.env);
     const command = packageManager === "pnpm" ? "pnpx" : packageManager === "npm" ? "npx" : null;
     if (command) {
-      const childProcess = spawn(command, ["@release-change/cli", "--debug"], {
+      const childProcess = spawn(command, ["@release-change/cli"], {
         cwd,
         env: { ...process.env, RELEASE_TOKEN: token },
         stdio: ["ignore", "inherit", "inherit"]
