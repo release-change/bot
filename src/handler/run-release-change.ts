@@ -14,7 +14,7 @@ export const runReleaseChange = async (cwd: string, token: string): Promise<void
     if (command) {
       const childProcess = spawn(command, ["@release-change/cli"], {
         cwd,
-        env: { ...process.env, RELEASE_TOKEN: token, IS_GITHUB_APP: "true" },
+        env: { ...process.env, RELEASE_TOKEN: token, ISSUE_PR_TOKEN: token, IS_GITHUB_APP: "true" },
         stdio: ["ignore", "inherit", "inherit"]
       });
       childProcess.on("error", reject);
