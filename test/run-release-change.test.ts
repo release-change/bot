@@ -38,7 +38,11 @@ it.each(mockedReleaseChangeCommands)(
       ["@release-change/cli"],
       expect.objectContaining({
         cwd: mockedCwd,
-        env: expect.objectContaining({ RELEASE_TOKEN: mockedToken })
+        env: expect.objectContaining({
+          RELEASE_TOKEN: mockedToken,
+          ISSUE_PR_TOKEN: mockedToken,
+          IS_GITHUB_APP: "true"
+        })
       })
     );
   }
