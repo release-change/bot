@@ -51,7 +51,7 @@
     "tsc:watch": "tsc --watch --preserveWatchOutput"
   },
   "dependencies": {
-    "@release-change/config": "0.2.1",
+    "@release-change/config": "0.3.0",
     "@release-change/get-packages": "0.2.2",
     "@release-change/shared": "0.2.0"
   },
