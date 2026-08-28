@@ -12,8 +12,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0
       '@release-change/get-packages':
-        specifier: 0.2.2
-        version: 0.2.2
+        specifier: 0.3.0
+        version: 0.3.0
       '@release-change/shared':
         specifier: 0.3.0
         version: 0.3.0
@@ -201,29 +201,17 @@ packages:
   '@oxc-project/types@0.144.0':
     resolution: {integrity: sha512-nuhZIOLuI6TFQ32I/WnUx+SCPY7SdSKwgnFHydAuoS1+Z4BRcaP+RRJmGzl9lw+0OFF7UmaESf7KQRXaNLHypg==}
 
-  '@release-change/config@0.2.1':
-    resolution: {integrity: sha512-sjwseUbi71eJ+AgJj28sPMtRlwwmfraUrz0vXUYkddvQVABA9U2vJWCDa7dBK6K6fwlqwfL78/pobS88Mk1CkQ==}
-    engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
-
   '@release-change/config@0.3.0':
     resolution: {integrity: sha512-VLKEg8zXvi/ZIV6/jzxJR/LdDi7Dehn7PtP2dv2CDQsDnq8CYSfWoAZmkcYOQq4UqsXTl2vsZh0L0kxmzq4OJw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
-  '@release-change/get-packages@0.2.2':
-    resolution: {integrity: sha512-TTP/WxDcFcOFU/MN1QtdhDxLzr/LSdhYwZAQFOpagvHSj1cSq/Kbr1l8qBu/ZanB+zZW9/09yDkF4D7Vutm+ug==}
+  '@release-change/get-packages@0.3.0':
+    resolution: {integrity: sha512-cs/7qhLMn00s9HGLKK289StuIMhrgcSgjK0ZoSI/8bNiRR6BIMsKa0YA4iY3w+PdJSECQ+pqz8ly6nfBPiWYcg==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
-
-  '@release-change/logger@0.2.0':
-    resolution: {integrity: sha512-zMkZGuagrjbrAVH/P5uKEvxwa7Qsq1Fnie+0wO6RvQLEfsoRLBnw2oH/q53NXctyxj0FAuSdNJQPy00uk2dM9Q==}
-    engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.33.0'}
 
   '@release-change/logger@0.3.0':
     resolution: {integrity: sha512-KxYapeaUWN5aBfERUw9BQGoH6tpH99L4lkFNadgb8S+Mzm3a0GORU2Fl2h1CksR9A24jm0Cf7ufCLRmVa1OSiw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
-
-  '@release-change/shared@0.2.0':
-    resolution: {integrity: sha512-PVbbYsQF03BXGyITCp0ty8q4fZgsKfiB95evx6sIhinIQ5RCj2vYdY+ktMZTUMCpPrEcy1ftQoQBMvb0UF6iVw==}
-    engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.33.0'}
 
   '@release-change/shared@0.3.0':
     resolution: {integrity: sha512-C4KPxdTqm6ZJXUtrY+hh5T/hrM7jcKLlCB8i1g8K5h+duL6gXDJ6c2nBUIx9kw+R5uekP6mhEZPwviJL43mDZw==}
@@ -1146,31 +1134,20 @@ snapshots:
 
   '@oxc-project/types@0.144.0': {}
 
-  '@release-change/config@0.2.1':
-    dependencies:
-      '@release-change/logger': 0.2.0
-      '@release-change/shared': 0.2.0
-
   '@release-change/config@0.3.0':
     dependencies:
       '@release-change/logger': 0.3.0
       '@release-change/shared': 0.3.0
 
-  '@release-change/get-packages@0.2.2':
+  '@release-change/get-packages@0.3.0':
     dependencies:
-      '@release-change/config': 0.2.1
-      '@release-change/logger': 0.2.0
-      '@release-change/shared': 0.2.0
-
-  '@release-change/logger@0.2.0':
-    dependencies:
-      '@release-change/shared': 0.2.0
+      '@release-change/config': 0.3.0
+      '@release-change/logger': 0.3.0
+      '@release-change/shared': 0.3.0
 
   '@release-change/logger@0.3.0':
     dependencies:
       '@release-change/shared': 0.3.0
-
-  '@release-change/shared@0.2.0': {}
 
   '@release-change/shared@0.3.0': {}
 

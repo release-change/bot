@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "@release-change/config": "0.3.0",
-    "@release-change/get-packages": "0.2.2",
+    "@release-change/get-packages": "0.3.0",
     "@release-change/shared": "0.3.0"
   },
   "devDependencies": {
