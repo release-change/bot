@@ -12,8 +12,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0
       '@release-change/get-packages':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.3.1
+        version: 0.3.1
       '@release-change/shared':
         specifier: 0.3.0
         version: 0.3.0
@@ -212,8 +212,8 @@ packages:
     resolution: {integrity: sha512-VLKEg8zXvi/ZIV6/jzxJR/LdDi7Dehn7PtP2dv2CDQsDnq8CYSfWoAZmkcYOQq4UqsXTl2vsZh0L0kxmzq4OJw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
-  '@release-change/get-packages@0.3.0':
-    resolution: {integrity: sha512-cs/7qhLMn00s9HGLKK289StuIMhrgcSgjK0ZoSI/8bNiRR6BIMsKa0YA4iY3w+PdJSECQ+pqz8ly6nfBPiWYcg==}
+  '@release-change/get-packages@0.3.1':
+    resolution: {integrity: sha512-zuiYg+dKl8wDzP2T0ksE+ZdsUeF+/ad4x+MSLQfs24dPg9TnKcbqyim4i/ZCRlFai7ZnQbhSDeo7SQqH3SWlUA==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
   '@release-change/logger@0.3.0':
@@ -1136,7 +1136,7 @@ snapshots:
       '@release-change/logger': 0.3.0
       '@release-change/shared': 0.3.0
 
-  '@release-change/get-packages@0.3.0':
+  '@release-change/get-packages@0.3.1':
     dependencies:
       '@release-change/config': 0.3.0
       '@release-change/logger': 0.3.0
