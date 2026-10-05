@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@release-change/config':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       '@release-change/get-packages':
         specifier: 0.3.2
         version: 0.3.2
@@ -212,6 +212,10 @@ packages:
     resolution: {integrity: sha512-VLKEg8zXvi/ZIV6/jzxJR/LdDi7Dehn7PtP2dv2CDQsDnq8CYSfWoAZmkcYOQq4UqsXTl2vsZh0L0kxmzq4OJw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
+  '@release-change/config@0.4.0':
+    resolution: {integrity: sha512-yZhUU6K0K1JZPngPocMcP9Pz1C4aZSn95mjvpmWqvlyUvA41n1R7HO8b+8wDZArvJWeTpIRCe7kRfxwWUVkRNQ==}
+    engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
+
   '@release-change/get-packages@0.3.2':
     resolution: {integrity: sha512-SbOoFS3zv9jTwjLfQK0/zNOM0cf6IwzajJBCc3wJXQR+8GZYHXnw48kT94AtLcZPU1sijfuNlxDzhaQXhGegXw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
@@ -220,6 +224,10 @@ packages:
     resolution: {integrity: sha512-KxYapeaUWN5aBfERUw9BQGoH6tpH99L4lkFNadgb8S+Mzm3a0GORU2Fl2h1CksR9A24jm0Cf7ufCLRmVa1OSiw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
+  '@release-change/logger@0.4.0':
+    resolution: {integrity: sha512-iDRdf4Xvk7lVEqoE9qybqJnDjIk3US9C9g0Gx9ieKFOP/61eX9FF9ODe/CNm5Ym2yDHbJrKRFwiBEAleFVHY2w==}
+    engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
+
   '@release-change/semver@0.1.0':
     resolution: {integrity: sha512-xMMNsJEJaZNyOOh2rvs2W4Nyw50Tw+est0p8KqiPImtsbe8cjTrBqdI16zzi5sjZJQU3IRfD/qLW1fdV3OafxA==}
     engines: {node: ^20.18.3 || ^22.12.0 || ^24.0.0, npm: '>=10.8.2', pnpm: '>=10.28.0'}
@@ -227,6 +235,10 @@ packages:
   '@release-change/shared@0.3.0':
     resolution: {integrity: sha512-C4KPxdTqm6ZJXUtrY+hh5T/hrM7jcKLlCB8i1g8K5h+duL6gXDJ6c2nBUIx9kw+R5uekP6mhEZPwviJL43mDZw==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
+
+  '@release-change/shared@0.4.0':
+    resolution: {integrity: sha512-Sg4QyEgfqjtOxSiXXpuDcdSphxrjs2uWvw1TYRj1asUguiz25lNivSWEEw0VqPGJygoIBdND2md5dL51f/oyGg==}
+    engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
 
   '@rolldown/binding-android-arm-eabi@1.2.12':
     resolution: {integrity: sha512-dB/a1214qKfHMXCpgqR4OZT+jS4kTyEXbQGJPqzobt5EwH5rX080pxE37alt3RzvR1bf1Yz/yGqRfrYAxuPw0A==}
@@ -1130,6 +1142,11 @@ snapshots:
       '@release-change/logger': 0.3.0
       '@release-change/shared': 0.3.0
 
+  '@release-change/config@0.4.0':
+    dependencies:
+      '@release-change/logger': 0.4.0
+      '@release-change/shared': 0.4.0
+
   '@release-change/get-packages@0.3.2':
     dependencies:
       '@release-change/config': 0.3.0
@@ -1141,9 +1158,15 @@ snapshots:
     dependencies:
       '@release-change/shared': 0.3.0
 
+  '@release-change/logger@0.4.0':
+    dependencies:
+      '@release-change/shared': 0.4.0
+
   '@release-change/semver@0.1.0': {}
 
   '@release-change/shared@0.3.0': {}
+
+  '@release-change/shared@0.4.0': {}
 
   '@rolldown/binding-android-arm-eabi@1.2.12':
     optional: true
