@@ -15,8 +15,8 @@ importers:
         specifier: 0.4.0
         version: 0.4.0
       '@release-change/shared':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.15
@@ -223,10 +223,6 @@ packages:
   '@release-change/semver@0.2.0':
     resolution: {integrity: sha512-2IYnU9imjB8nBvthE5oNwGCrzMEc6IyuqGq8NIn9SYU4Qvz1ESMdFCXcQbuoqufahydzhQ9fxs8SFyGYKAGy7g==}
     engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
-
-  '@release-change/shared@0.3.0':
-    resolution: {integrity: sha512-C4KPxdTqm6ZJXUtrY+hh5T/hrM7jcKLlCB8i1g8K5h+duL6gXDJ6c2nBUIx9kw+R5uekP6mhEZPwviJL43mDZw==}
-    engines: {node: ^22.12.0 || ^24.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3'}
 
   '@release-change/shared@0.4.0':
     resolution: {integrity: sha512-Sg4QyEgfqjtOxSiXXpuDcdSphxrjs2uWvw1TYRj1asUguiz25lNivSWEEw0VqPGJygoIBdND2md5dL51f/oyGg==}
@@ -1146,8 +1142,6 @@ snapshots:
       '@release-change/shared': 0.4.0
 
   '@release-change/semver@0.2.0': {}
-
-  '@release-change/shared@0.3.0': {}
 
   '@release-change/shared@0.4.0': {}
 
