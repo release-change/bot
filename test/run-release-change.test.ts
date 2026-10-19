@@ -30,12 +30,12 @@ it("should throw an error if no valid package manager is found", async () => {
 });
 it.each(mockedReleaseChangeCommands)(
   "should run the `$expectedCommand` command when the package manager is `$packageManager`",
-  async ({ packageManager, expectedCommand }) => {
+  async ({ packageManager, expectedCommand, expectedArgs }) => {
     vi.mocked(getPackageManager).mockReturnValue(packageManager);
     await runReleaseChange(mockedCwd, mockedToken);
     expect(spawn).toHaveBeenCalledWith(
       expectedCommand,
-      ["@release-change/cli"],
+      expectedArgs,
       expect.objectContaining({
         cwd: mockedCwd,
         env: expect.objectContaining({
