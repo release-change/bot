@@ -10,9 +10,18 @@ import { getPackageManager } from "@release-change/get-packages";
 export const runReleaseChange = async (cwd: string, token: string): Promise<void> => {
   await new Promise<void>((resolve, reject) => {
     const packageManager = getPackageManager(cwd, process.env);
-    const command = packageManager === "pnpm" ? "pnpx" : packageManager === "npm" ? "npx" : null;
+    const command =
+      packageManager === "pnpm"
+        ? "pnpx"
+        : packageManager === "yarn"
+          ? packageManager
+          : packageManager === "npm"
+            ? "npx"
+            : null;
     if (command) {
-      const childProcess = spawn(command, ["@release-change/cli"], {
+      const args = ["@release-change/cli"];
+      if (packageManager === "yarn") args.unshift("dlx");
+      const childProcess = spawn(command, args, {
         cwd,
         env: { ...process.env, RELEASE_TOKEN: token, ISSUE_PR_TOKEN: token, IS_GITHUB_APP: "true" },
         stdio: ["ignore", "inherit", "inherit"]
