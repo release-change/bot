@@ -47,9 +47,12 @@ export const handleWebhook = async (
     );
     if (branch && eligibleBranches.includes(branch)) {
       const workspace = await createTemporaryWorkspace(installationId, after);
-      await cloneRepository(owner, repo, workspace, token);
-      await runReleaseChange(workspace, token);
-      await deleteTemporaryWorkspace(workspace);
+      try {
+        await cloneRepository(owner, repo, workspace, token);
+        await runReleaseChange(workspace, token);
+      } finally {
+        await deleteTemporaryWorkspace(workspace);
+      }
       return { status: 200, message: "release-change has been triggered." };
     }
     return {
