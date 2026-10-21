@@ -1,5 +1,4 @@
 import { spawn } from "node:child_process";
-import { EventEmitter } from "node:events";
 
 import { getPackageManager } from "@release-change/get-packages";
 import { beforeEach, expect, it, vi } from "vitest";
@@ -10,6 +9,14 @@ import { installCorepack } from "../src/utils/install-corepack.js";
 import { mockedReleaseChangeCommands } from "./fixtures/mocked-release-change-commands.js";
 import { mockedCwd } from "./utils/fixtures/mocked-cwd.js";
 import { mockedToken } from "./utils/fixtures/mocked-token.js";
+
+const mockedChildProcess = {
+  stdout: { on: vi.fn() },
+  stderr: { on: vi.fn() },
+  on: vi.fn(),
+  exitCode: 0
+};
+const mockedSpawn = spawn as ReturnType<typeof vi.fn>;
 
 vi.mock("node:child_process", () => ({ spawn: vi.fn() }));
 vi.mock("@release-change/get-packages", () => ({
@@ -23,10 +30,12 @@ vi.mock("../src/utils/enable-corepack.ts", () => ({
 }));
 
 beforeEach(() => {
-  vi.mocked(spawn).mockImplementation(() => {
-    const childProcess = new EventEmitter() as ReturnType<typeof spawn>;
-    setImmediate(() => childProcess.emit("close", 0));
-    return childProcess;
+  mockedSpawn.mockImplementation(() => {
+    setTimeout(() => {
+      const closeCallback = mockedChildProcess.on.mock.calls.find(call => call[0] === "close")?.[1];
+      if (closeCallback) closeCallback(0);
+    }, 0);
+    return mockedChildProcess;
   });
 });
 
