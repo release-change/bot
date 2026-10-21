@@ -5,6 +5,8 @@ import { getPackageManager } from "@release-change/get-packages";
 import { beforeEach, expect, it, vi } from "vitest";
 
 import { runReleaseChange } from "../src/handler/run-release-change.js";
+import { enableCorepack } from "../src/utils/enable-corepack.js";
+import { installCorepack } from "../src/utils/install-corepack.js";
 import { mockedReleaseChangeCommands } from "./fixtures/mocked-release-change-commands.js";
 import { mockedCwd } from "./utils/fixtures/mocked-cwd.js";
 import { mockedToken } from "./utils/fixtures/mocked-token.js";
@@ -12,6 +14,12 @@ import { mockedToken } from "./utils/fixtures/mocked-token.js";
 vi.mock("node:child_process", () => ({ spawn: vi.fn() }));
 vi.mock("@release-change/get-packages", () => ({
   getPackageManager: vi.fn()
+}));
+vi.mock("../src/utils/install-corepack.ts", () => ({
+  installCorepack: vi.fn()
+}));
+vi.mock("../src/utils/enable-corepack.ts", () => ({
+  enableCorepack: vi.fn()
 }));
 
 beforeEach(() => {
@@ -47,3 +55,11 @@ it.each(mockedReleaseChangeCommands)(
     );
   }
 );
+it("should install and enable Corepack if the package manager is `yarn`", async () => {
+  vi.mocked(getPackageManager).mockReturnValue("yarn");
+  vi.mocked(installCorepack).mockResolvedValue();
+  vi.mocked(enableCorepack).mockResolvedValue();
+  await runReleaseChange(mockedCwd, mockedToken);
+  expect(installCorepack).toHaveBeenCalledWith(mockedCwd);
+  expect(enableCorepack).toHaveBeenCalledWith(mockedCwd);
+});
