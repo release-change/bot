@@ -35,7 +35,10 @@ export const runReleaseChange = async (cwd: string, token: string): Promise<void
           ...inheritedEnv,
           RELEASE_TOKEN: token,
           ISSUE_PR_TOKEN: token,
-          IS_GITHUB_APP: "true"
+          IS_GITHUB_APP: "true",
+          GIT_CONFIG_COUNT: "1",
+          GIT_CONFIG_KEY_0: `url.https://x-access-token:${token}@github.com/.insteadOf`,
+          GIT_CONFIG_VALUE_0: "https://github.com/"
         },
         stdio: ["ignore", "inherit", "inherit"]
       });
