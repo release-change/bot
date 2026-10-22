@@ -10,7 +10,12 @@ import { handleWebhook } from "./handler/handle-webhook.js";
  * @return A new instance of the HTTP server running the GitHub App and listening on the port defined by the configuration.
  */
 createServer(async (request, response) => {
-  if (request.method !== "POST" || request.url !== "/api/webhook") {
+  if (request.method === "GET" && request.url === "/health") {
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({ status: "ok" }));
+    return;
+  }
+  if (request.method !== "POST" || request.url !== "/api") {
     response.writeHead(404).end();
     return;
   }
