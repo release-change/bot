@@ -15,7 +15,7 @@ createServer(async (request, response) => {
     response.end(JSON.stringify({ status: "ok" }));
     return;
   }
-  if (request.method !== "POST" || request.url !== "/api/webhook") {
+  if (request.method !== "POST" || request.url !== "/api") {
     response.writeHead(404).end();
     return;
   }
