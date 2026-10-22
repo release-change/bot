@@ -28,9 +28,15 @@ export const runReleaseChange = async (cwd: string, token: string): Promise<void
   }
   await new Promise<void>((resolve, reject) => {
     if (command) {
+      const { PRIVATE_KEY, WEBHOOK_SECRET, ...inheritedEnv } = process.env;
       const childProcess = spawn(command, args, {
         cwd,
-        env: { ...process.env, RELEASE_TOKEN: token, ISSUE_PR_TOKEN: token, IS_GITHUB_APP: "true" },
+        env: {
+          ...inheritedEnv,
+          RELEASE_TOKEN: token,
+          ISSUE_PR_TOKEN: token,
+          IS_GITHUB_APP: "true"
+        },
         stdio: ["ignore", "inherit", "inherit"]
       });
       childProcess.on("error", reject);
