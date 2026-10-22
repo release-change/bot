@@ -34,8 +34,22 @@ export const handleWebhook = async (
       ref,
       after,
       repository: { full_name: repositoryName },
-      installation: { id: installationId }
+      installation: { id: installationId },
+      deleted
     } = payload;
+    if (deleted) {
+      return {
+        status: 200,
+        message:
+          "The referenced branch has been deleted; therefore, release-change will not be triggered."
+      };
+    }
+    if (ref.startsWith("refs/tags/")) {
+      return {
+        status: 200,
+        message: "The referenced branch is a tag; therefore, release-change will not be triggered."
+      };
+    }
     const token = await getInstallationToken(config, installationId);
     const [owner, repo] = repositoryName.split("/");
     const branch = extractBranchFromRef(ref);

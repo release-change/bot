@@ -6,6 +6,7 @@ import * as cloneRepositoryModule from "../src/utils/clone-repository.js";
 import * as createTemporaryWorkspaceModule from "../src/utils/create-temporary-workspace.js";
 import * as deleteTemporaryWorkspaceModule from "../src/utils/delete-temporary-workspace.js";
 import { fetchConfigFile } from "../src/utils/fetch-config-file.js";
+import * as getEligibleBranchesModule from "../src/utils/get-eligible-branches.js";
 import * as getInstallationTokenModule from "../src/utils/get-installation-token.js";
 import { mockSign } from "./fixtures/mock-sign.js";
 import { mockedConfig } from "./fixtures/mocked-config.js";
@@ -18,6 +19,7 @@ vi.mocked(fetchConfigFile).mockResolvedValue({ branches: ["main"] });
 
 beforeEach(() => {
   vi.spyOn(getInstallationTokenModule, "getInstallationToken").mockResolvedValue("fake-token");
+  vi.spyOn(getEligibleBranchesModule, "getEligibleBranches").mockResolvedValue(["main"]);
   vi.spyOn(createTemporaryWorkspaceModule, "createTemporaryWorkspace").mockResolvedValue(
     "/tmp/release-change-123-abcdef0-"
   );
@@ -46,6 +48,52 @@ it("should ignore any events which are not push", async () => {
     status: 200,
     message: "The event is ignored; therefore, release-change will not be triggered."
   });
+  expect(getInstallationTokenModule.getInstallationToken).not.toHaveBeenCalled();
+  expect(getEligibleBranchesModule.getEligibleBranches).not.toHaveBeenCalled();
+  expect(createTemporaryWorkspaceModule.createTemporaryWorkspace).not.toHaveBeenCalled();
+  expect(cloneRepositoryModule.cloneRepository).not.toHaveBeenCalled();
+  expect(runReleaseChangeModule.runReleaseChange).not.toHaveBeenCalled();
+  expect(deleteTemporaryWorkspaceModule.deleteTemporaryWorkspace).not.toHaveBeenCalled();
+});
+it("should ignore the push event if the branch is deleted", async () => {
+  const body = JSON.stringify({
+    ...mockedValidPayload,
+    ref: "refs/heads/deleted-branch",
+    deleted: true
+  });
+  const result = await handleWebhook(
+    mockedConfig,
+    { "x-github-event": "push", "x-hub-signature-256": mockSign(body) },
+    body
+  );
+  expect(result).toStrictEqual({
+    status: 200,
+    message:
+      "The referenced branch has been deleted; therefore, release-change will not be triggered."
+  });
+  expect(getInstallationTokenModule.getInstallationToken).not.toHaveBeenCalled();
+  expect(getEligibleBranchesModule.getEligibleBranches).not.toHaveBeenCalled();
+  expect(createTemporaryWorkspaceModule.createTemporaryWorkspace).not.toHaveBeenCalled();
+  expect(cloneRepositoryModule.cloneRepository).not.toHaveBeenCalled();
+  expect(runReleaseChangeModule.runReleaseChange).not.toHaveBeenCalled();
+  expect(deleteTemporaryWorkspaceModule.deleteTemporaryWorkspace).not.toHaveBeenCalled();
+});
+it("should ignore the push event if the branch is a tag branch", async () => {
+  const body = JSON.stringify({
+    ...mockedValidPayload,
+    ref: "refs/tags/v1.2.3"
+  });
+  const result = await handleWebhook(
+    mockedConfig,
+    { "x-github-event": "push", "x-hub-signature-256": mockSign(body) },
+    body
+  );
+  expect(result).toStrictEqual({
+    status: 200,
+    message: "The referenced branch is a tag; therefore, release-change will not be triggered."
+  });
+  expect(getInstallationTokenModule.getInstallationToken).not.toHaveBeenCalled();
+  expect(getEligibleBranchesModule.getEligibleBranches).not.toHaveBeenCalled();
   expect(createTemporaryWorkspaceModule.createTemporaryWorkspace).not.toHaveBeenCalled();
   expect(cloneRepositoryModule.cloneRepository).not.toHaveBeenCalled();
   expect(runReleaseChangeModule.runReleaseChange).not.toHaveBeenCalled();
