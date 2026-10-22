@@ -12,5 +12,6 @@ export const mockedValidPayload = {
   installation: {
     id: 123,
     node_id: "fake-node-id"
-  }
+  },
+  deleted: false
 };
