@@ -178,3 +178,12 @@ export type GitHubPayload = {
   commits: Commit[];
   head_commit: Commit | null;
 };
+export type ReleaseChangeJob = {
+  config: AppConfig;
+  deliveryId: string;
+  after: string;
+  installationId: number;
+  owner: string;
+  repo: string;
+  branch: string;
+};
