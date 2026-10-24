@@ -19,7 +19,7 @@ export const processReleaseChange = async (job: ReleaseChangeJob): Promise<void>
   console.log(`Processing delivery ${deliveryId} for ${owner}/${repo}#${branch}`);
   const workspace = await createTemporaryWorkspace(installationId, after);
   try {
-    await cloneRepository(owner, repo, workspace, token);
+    await cloneRepository(owner, repo, branch, workspace, token);
     await runReleaseChange(workspace, token);
   } finally {
     await deleteTemporaryWorkspace(workspace);
