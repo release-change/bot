@@ -1,6 +1,7 @@
 import { createServer } from "node:http";
 
 import { config, port } from "./config.js";
+import { waitForChain } from "./handler/enqueue-release-change.js";
 import { handleWebhook } from "./handler/handle-webhook.js";
 
 /**
@@ -9,7 +10,7 @@ import { handleWebhook } from "./handler/handle-webhook.js";
  * @param response - The HTTP response.
  * @return A new instance of the HTTP server running the GitHub App and listening on the port defined by the configuration.
  */
-createServer(async (request, response) => {
+const server = createServer(async (request, response) => {
   if (request.method === "GET" && request.url === "/health") {
     response.writeHead(200, { "Content-Type": "application/json" });
     response.end(JSON.stringify({ status: "ok" }));
@@ -36,6 +37,14 @@ createServer(async (request, response) => {
     response.writeHead(500, { "Content-Type": "application/json" });
     response.end(JSON.stringify({ error: errorReporting }));
   }
-}).listen(port, () => {
+});
+
+server.listen(port, () => {
   console.log(`App ${config.appId} listening on port ${port}`);
+});
+
+// Stop the server gracefully
+process.on("SIGTERM", () => {
+  server.close();
+  void waitForChain().then(() => process.exit(0));
 });

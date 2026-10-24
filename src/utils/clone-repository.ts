@@ -8,8 +8,8 @@ import { runCommand } from "@release-change/shared";
  * @param token - The GitHub personal access token to use for authentication.
  */
 export const cloneRepository = async (
-  owner: string | undefined,
-  repo: string | undefined,
+  owner: string,
+  repo: string,
   cwd: string,
   token: string
 ): Promise<void> => {
@@ -28,6 +28,6 @@ export const cloneRepository = async (
     return;
   }
   throw new Error(
-    "Failed to clone the repository: the owner and the repository name must not be undefined or empty."
+    "Failed to clone the repository: the owner and the repository name must not be empty."
   );
 };

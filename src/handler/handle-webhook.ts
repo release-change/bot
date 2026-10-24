@@ -1,13 +1,8 @@
 import type { AppConfig, GitHubPayload } from "../types.js";
 
-import { cloneRepository } from "../utils/clone-repository.js";
-import { createTemporaryWorkspace } from "../utils/create-temporary-workspace.js";
-import { deleteTemporaryWorkspace } from "../utils/delete-temporary-workspace.js";
 import { extractBranchFromRef } from "../utils/extract-branch-from-ref.js";
-import { getEligibleBranches } from "../utils/get-eligible-branches.js";
-import { getInstallationToken } from "../utils/get-installation-token.js";
 import { verifySignature } from "../utils/verify-signature.js";
-import { runReleaseChange } from "./run-release-change.js";
+import { enqueueReleaseChange } from "./enqueue-release-change.js";
 
 /**
  * Handles a webhook request from GitHub.
@@ -50,24 +45,19 @@ export const handleWebhook = async (
         message: "The referenced branch is a tag; therefore, release-change will not be triggered."
       };
     }
-    const token = await getInstallationToken(config, installationId);
     const [owner, repo] = repositoryName.split("/");
     const branch = extractBranchFromRef(ref);
-    const eligibleBranches = await getEligibleBranches(
-      owner ?? "",
-      repo ?? "",
-      branch ?? "",
-      token
-    );
-    if (branch && eligibleBranches.includes(branch)) {
-      const workspace = await createTemporaryWorkspace(installationId, after);
-      try {
-        await cloneRepository(owner, repo, workspace, token);
-        await runReleaseChange(workspace, token);
-      } finally {
-        await deleteTemporaryWorkspace(workspace);
-      }
-      return { status: 200, message: "release-change has been triggered." };
+    if (typeof owner === "string" && typeof repo === "string" && typeof branch === "string") {
+      enqueueReleaseChange({
+        config,
+        deliveryId: headers["x-github-delivery"] ?? "",
+        after,
+        installationId,
+        owner,
+        repo,
+        branch
+      });
+      return { status: 202, message: "release-change being triggered…" };
     }
     return {
       status: 200,

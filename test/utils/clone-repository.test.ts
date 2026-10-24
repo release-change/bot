@@ -8,24 +8,14 @@ import { mockedRepo } from "./fixtures/mocked-repo.js";
 import { mockedToken } from "./fixtures/mocked-token.js";
 
 const expectedErrorMessage =
-  "Failed to clone the repository: the owner and the repository name must not be undefined or empty.";
+  "Failed to clone the repository: the owner and the repository name must not be empty.";
 
 vi.mock("@release-change/shared", () => ({
   runCommand: vi.fn()
 }));
 
-it("should throw an error if the owner is undefined", async () => {
-  await expect(cloneRepository(undefined, mockedRepo, mockedCwd, mockedToken)).rejects.toThrow(
-    expectedErrorMessage
-  );
-});
 it("should throw an error if the owner is empty", async () => {
   await expect(cloneRepository("", mockedRepo, mockedCwd, mockedToken)).rejects.toThrow(
-    expectedErrorMessage
-  );
-});
-it("should throw an error if the repository name is undefined", async () => {
-  await expect(cloneRepository(mockedOwner, undefined, mockedCwd, mockedToken)).rejects.toThrow(
     expectedErrorMessage
   );
 });
