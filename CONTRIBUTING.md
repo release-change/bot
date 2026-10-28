@@ -10,7 +10,7 @@ This project and everyone participating in it are governed by a [Code of Conduct
 
 ## Issue tracker
 
-The issue tracker is the channel for bug reports, feature requests and submitting pull requests only. Please use the [help](README.md#get-help) section for support, troubleshooting and questions.
+The issue tracker is the channel for bug reports, feature requests and submitting pull requests only.
 
 @release-change/bot is using [GitHub issues](https://github.com/release-change/bot/issues) to manage feature requests and bugs. Before opening an issue or a pull request, try to ensure your problem or feature request has not been already reported or fixed.
 
