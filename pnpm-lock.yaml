@@ -12,8 +12,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0
       '@release-change/get-packages':
-        specifier: 0.5.0
-        version: 0.5.0
+        specifier: 0.5.1
+        version: 0.5.1
       '@release-change/shared':
         specifier: 0.5.0
         version: 0.5.0
@@ -224,21 +224,33 @@ packages:
     resolution: {integrity: sha512-dl9nPOqYrT5c6J9eTi+25kS7dKnQG1VvmMdl3wG5BVTJAtJb4HwaPvAeJrsGgubenreyTDDcUOAA4CIIcUQitw==}
     engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
 
-  '@release-change/get-packages@0.5.0':
-    resolution: {integrity: sha512-hmkXiD9ojlGrkRVrQ11IHwrcM1h7k0LEanXDTu5XdH8RwkeiK/eyNmvDQbBO/5bT7lvecptJWJ+8o/pR8W8Lkg==}
-    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
+  '@release-change/config@0.5.1':
+    resolution: {integrity: sha512-PgtK6meMX318v7PzL9FwS/42zHSQ89f4Ir6AU6Ep1A9+cZ0viXjl13I7BFEUuZRysnF+Q0CEgg2o63e8SFP4bg==}
+    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
+
+  '@release-change/get-packages@0.5.1':
+    resolution: {integrity: sha512-tp1mbQGzwedWNN5ZuLNu5T8CLfGelv+NmQmvpWhcBJJBZgUKufksJhFwUARap39Um6L7/+yQqsjbROyej1BNOw==}
+    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
 
   '@release-change/logger@0.5.0':
     resolution: {integrity: sha512-6mRbzh6Gl/+ns/nPR2F8yCxVHKY1iQDmdXgqJrmEkMqyemVpBMq/k4RPG67zDTxD9XAoJBT+EwFF9MNeLX8tzw==}
     engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
 
-  '@release-change/semver@0.3.0':
-    resolution: {integrity: sha512-LRVHbTjucuqE+gR8MViW9a4NsOKtHL29uptJeAFwyjPmxf5CGmCdI9oCZrOKmFT2tsMNOKfw09Ddfo631qOiTw==}
-    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
+  '@release-change/logger@0.5.1':
+    resolution: {integrity: sha512-R4AxyhrX9u8KKXwPcJUbQmJJBuE/Tc8FjoSDrfcMnRIDcfeUIXehMvUUQi3Q9sk62yN2OXf/YjtIAE4/NFduVQ==}
+    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
+
+  '@release-change/semver@0.3.1':
+    resolution: {integrity: sha512-FaSZtqTzQ5rpEtxvSx6Bsa0kY/OvW1ycCD5ExtRT3R4MV4dSnQOrAUupRpE3Nnka+qKiBn6dJ3dbvSsiFeVpeg==}
+    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
 
   '@release-change/shared@0.5.0':
     resolution: {integrity: sha512-281YiH1vg0ORUJ2YR5piBv6N0B5Vfhsbq0+nDF9vLO89nPLyo5WiTGywnuwvDfSKY1hTTvSGnAbor0wdHtAjeQ==}
     engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.9.0'}
+
+  '@release-change/shared@0.5.1':
+    resolution: {integrity: sha512-2WsWyYeSBGky0avaWphn4tghdgzYQoVLW2iDqzNozGhhyTu74V57PklWHzVIBKTYu7LIurbWVTjyHxTgvIYLSg==}
+    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
 
   '@rolldown/binding-android-arm-eabi@1.2.16':
     resolution: {integrity: sha512-ia3DwAs0OsMGS7+IConptSiyk9pEXkOx/AbJ2n/lAGxH3QkWQus1t8d7gnAT38FCU2sQu8lUbeR6AiZFv4JxaA==}
@@ -1144,20 +1156,31 @@ snapshots:
       '@release-change/logger': 0.5.0
       '@release-change/shared': 0.5.0
 
-  '@release-change/get-packages@0.5.0':
+  '@release-change/config@0.5.1':
     dependencies:
-      '@release-change/config': 0.5.0
-      '@release-change/logger': 0.5.0
-      '@release-change/semver': 0.3.0
-      '@release-change/shared': 0.5.0
+      '@release-change/logger': 0.5.1
+      '@release-change/shared': 0.5.1
+
+  '@release-change/get-packages@0.5.1':
+    dependencies:
+      '@release-change/config': 0.5.1
+      '@release-change/logger': 0.5.1
+      '@release-change/semver': 0.3.1
+      '@release-change/shared': 0.5.1
 
   '@release-change/logger@0.5.0':
     dependencies:
       '@release-change/shared': 0.5.0
 
-  '@release-change/semver@0.3.0': {}
+  '@release-change/logger@0.5.1':
+    dependencies:
+      '@release-change/shared': 0.5.1
+
+  '@release-change/semver@0.3.1': {}
 
   '@release-change/shared@0.5.0': {}
+
+  '@release-change/shared@0.5.1': {}
 
   '@rolldown/binding-android-arm-eabi@1.2.16':
     optional: true
