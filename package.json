@@ -53,7 +53,7 @@
   "dependencies": {
     "@release-change/config": "0.5.1",
     "@release-change/get-packages": "0.5.1",
-    "@release-change/shared": "0.5.0"
+    "@release-change/shared": "0.5.1"
   },
   "devDependencies": {
     "@biomejs/biome": "2.6.6",
