@@ -10,6 +10,9 @@ Automated running of release-change
 
 **release-change-bot** is a GitHub App which runs [release-change](https://github.com/release-change/release-change) when any changes in the codebase are pushed to any of the branches on which releases should happen. If a release is made, it then creates a release pull request and comments on the issues and pull requests which are concerned by the release.
 
+> [!IMPORTANT]
+> It is not recommended to both install this GitHub App and use the [release-change GitHub action](https://github.com/release-change/action): every push to the branches on which releases should happen will trigger two concurrent runs of release-change.
+
 ## Installation
 
 Install the bot from the [GitHub Apps marketplace](https://github.com/apps/release-change).
