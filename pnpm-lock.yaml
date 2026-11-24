@@ -12,8 +12,8 @@ importers:
         specifier: 0.5.2
         version: 0.5.2
       '@release-change/get-packages':
-        specifier: 0.5.2
-        version: 0.5.2
+        specifier: 0.5.3
+        version: 0.5.3
       '@release-change/shared':
         specifier: 0.5.1
         version: 0.5.1
@@ -236,16 +236,12 @@ packages:
   '@oxc-project/types@0.156.0':
     resolution: {integrity: sha512-1Duyg48TdJNdyhEB8Xn1L36bT9Pv6GUtlKjHxOys8xkaF/rQq3XJE+bAurSK/AgIz5mGFsb77cn9Pb20+WCScw==}
 
-  '@release-change/config@0.5.1':
-    resolution: {integrity: sha512-PgtK6meMX318v7PzL9FwS/42zHSQ89f4Ir6AU6Ep1A9+cZ0viXjl13I7BFEUuZRysnF+Q0CEgg2o63e8SFP4bg==}
-    engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
-
   '@release-change/config@0.5.2':
     resolution: {integrity: sha512-9rK3dgs5lHNNiBOdPaeWOBtAtVQZSJk24/DXE2SKNO8OCrUEeAx+/CVDJeFINrpB6cTAmu9qxWIoA5rJI8TJ0w==}
     engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
 
-  '@release-change/get-packages@0.5.2':
-    resolution: {integrity: sha512-aN/26uGA3bDH0g4kHJtz2PztuIe8Ii0LgGGmrKjwqSN4ajcXODMGSFbgheWq2X2dy6ww8UK9OUnBrEJQpnMKVw==}
+  '@release-change/get-packages@0.5.3':
+    resolution: {integrity: sha512-874GL5P7l1+Msqc9aniL+eq1ouhT+lxa4Y13H2GCfL9OXalHmgWSDn6kbw5snKzOewQenlNgn/X1VJVtWZesdg==}
     engines: {node: ^22.12.0 || ^24.0.0 || ^26.0.0, npm: '>=10.9.0', pnpm: '>=11.1.3', yarn: '>=4.10.3'}
 
   '@release-change/logger@0.5.1':
@@ -1190,19 +1186,14 @@ snapshots:
 
   '@oxc-project/types@0.156.0': {}
 
-  '@release-change/config@0.5.1':
-    dependencies:
-      '@release-change/logger': 0.5.1
-      '@release-change/shared': 0.5.1
-
   '@release-change/config@0.5.2':
     dependencies:
       '@release-change/logger': 0.5.1
       '@release-change/shared': 0.5.1
 
-  '@release-change/get-packages@0.5.2':
+  '@release-change/get-packages@0.5.3':
     dependencies:
-      '@release-change/config': 0.5.1
+      '@release-change/config': 0.5.2
       '@release-change/logger': 0.5.1
       '@release-change/semver': 0.3.2
       '@release-change/shared': 0.5.1
